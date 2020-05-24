@@ -151,7 +151,10 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
 
   if allowed(url, nil) and status_code == 200
     and not string.match(url, "^https?://[^/]*blogimg%.jp") 
-    and not string.match(url, "^https?://[^/]*blogsys%.jp") then
+    and not string.match(url, "^https?://[^/]*blogsys%.jp")
+    and not string.match(url, "^https?://img%.dlsite%.jp")
+    and not string.match(url, "^https?://media%.dlsite%.com")
+    and not string.match(url, "^https?://parts%.blog%.livedoor%.jp") then
     html = read_file(file)
     for newurl in string.gmatch(string.gsub(html, "&quot;", '"'), '([^"]+)') do
       checknewurl(newurl)
